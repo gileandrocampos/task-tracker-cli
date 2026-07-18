@@ -15,6 +15,19 @@ fun main(args: Array<String>) {
             val result = manager.add(inputData)
             println("Tarefa adicionada com sucesso (ID: ${result.id})")
         }
+        "list" -> {
+            val filter = if (inputData.isNotEmpty()) {
+                val normalizedStatus = inputData.trim()
+                    .replace("-", "_")
+                    .replace(" ", "_")
+                    .uppercase()
+                Status.valueOf(normalizedStatus)
+            } else {
+                null
+            }
+            val result = manager.list(filter)
+            println(result)
+        }
         "commands" -> {
             println("""
                 Comandos disponíveis:
