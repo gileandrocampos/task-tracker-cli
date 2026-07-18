@@ -5,7 +5,10 @@ import kotlinx.serialization.json.Json
 class TaskStorage {
     private val appDir = File("/home/campos", "task-cli-tracker")
     private val taskFile = File(appDir, "data/tasks.json")
-    private val jsonFormat = Json
+    private val jsonFormat = Json {
+        prettyPrint = true
+        ignoreUnknownKeys = true
+    }
 
     val file: File
         get() {
