@@ -46,3 +46,6 @@ bin/
 
 #ENV FILE
 .env
+
+# Local application data
+data/
