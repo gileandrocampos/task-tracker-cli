@@ -73,4 +73,15 @@ class TaskManager(private val storage: TaskStorage) {
         sb.append(separator())
         return sb.toString()
     }
+
+    fun markInProgress(taskId: Int): Task {
+        val tasks = this.tasks
+        var getTask: Task? = tasks.find { it.id == taskId }
+        if (getTask == null) {
+            throw IllegalArgumentException("Nenhuma tarefa com esse ID: $taskId foi encontrado")
+        }
+        getTask.status = Status.IN_PROGRESS
+        storage.saveTasks(tasks)
+        return getTask
+    }
 }

@@ -28,6 +28,17 @@ fun main(args: Array<String>) {
             val result = manager.list(filter)
             println(result)
         }
+        "mark-in-progress" -> {
+            val taskId: Int? = inputData.toIntOrNull()
+
+            if(taskId == null) {
+                println("ID de tarefa inválido.")
+                return
+            }
+
+            val result = manager.markInProgress(taskId)
+            println("Tarefa marcada como em andamento (ID: ${result.id})")
+        }
         "commands" -> {
             println("""
                 Comandos disponíveis:

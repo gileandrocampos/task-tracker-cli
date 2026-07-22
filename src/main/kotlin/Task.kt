@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 data class Task(
     val id: Int,
     val description: String,
-    val status: Status,
+    var status: Status,
     val createdAt: String,
     val updatedAt: String,
 ) {
